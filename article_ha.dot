@@ -1,0 +1,59 @@
+digraph G {
+  fontname = "Handlee";
+  //bgcolor=transparent;
+
+  graph [ fontname = "David" fontcolor=blue, fontsize=20 ];
+  node [ fontname = "David" fontcolor=blue, fontsize=20];
+  edge [ fontname = "David" fontcolor=red, fontsize=10 ];
+
+  start [ label = "article ה\nbefore gutteral?\n(ר,ע,א,ח,ה)" ];
+
+  hay_kamatz [ label = "הָ", fontcolor=black  ];
+  hay_seggol [ label = "הֶ", fontcolor=black  ];
+  hay_patah [ label = "הַ", fontcolor=black  ];
+  hay_patah_shuruk [ label = " ּהַ", fontcolor=black  ];
+
+  start -> alef_or_resh [ label = "yes", fontcolor=green ];
+  start -> hay_patah_shuruk [ label = "no" ];
+
+  // alef or resh
+  alef_or_resh [ label = "before ר,א?", shape = diamond ];
+  hay_kamatz_ar [ label = "הָ", fontcolor=black ];
+  alef_or_resh -> hay_kamatz_ar [ label = "yes", fontcolor=green ];
+  alef_or_resh -> ayen [ label = "no" ];
+
+  // ayen
+  ayen [ label = "before ע?" ];
+  unaccented_ayen [ label = "before\nunaccented עָ?", shape = diamond  ];
+  hay_seggol_ua [ label = "הֶ", fontcolor=black ];
+  ayen -> unaccented_ayen [ label = "yes", fontcolor=green ];
+  unaccented_ayen -> hay_seggol_ua [ label = "yes", fontcolor=green ];
+  unaccented_ayen -> hay_kamatz [ label = "no" ];
+
+  het [ label = "before ח?" , shape = diamond ];
+  het_kamatz [ label = "before חָ?", shape = diamond ];
+  hay_seggol_hk [ label = "הֶ", fontcolor=black  ];
+  hay_patah_hk [ label = "הַ", fontcolor=black  ];
+
+  ayen -> het [ label = "no" ];
+  het -> het_kamatz [ label = "yes", fontcolor=green ]
+  het_kamatz -> hay_seggol_hk [ label = "yes", fontcolor=green ];
+  het_kamatz -> hay_patah_hk [ label = "no" ];
+
+  hay [ label = "before ה?", shape = diamond  ];
+  het -> hay [ label = "no" ]
+
+  hay_kamatz_q [ label = "before הָ?", shape = diamond  ];
+
+  hay_patah_shuruk_hay [ label = " ּהַ", fontcolor=black  ];
+  hay -> hay_kamatz_q [ label = "yes", fontcolor=green ];
+  hay -> hay_patah_shuruk_hay [ label = "no" ];
+
+  unaccented_hay [ label = "before\nunaccented הָ?", shape = diamond  ];
+  hay_kamatz_q -> unaccented_hay [ label = "yes", fontcolor=green ];
+  hay_kamatz_q -> hay_patah [ label = "no" ];
+
+  hay_kamatz_uh [ label = "הָ", fontcolor=black  ];
+  unaccented_hay -> hay_seggol [ label = "yes", fontcolor=green ];
+  unaccented_hay -> hay_kamatz_uh [ label = "no" ];
+}
